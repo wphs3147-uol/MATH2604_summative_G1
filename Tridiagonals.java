@@ -19,7 +19,49 @@ static double[][] exampleMatrix(int n)
         }
         return m; 
     }
+    /**
+    * Checks whether the given array represents a valid tridiagonal matrix representation
+    * 
+    * A tridiagonal matrix is stored as a 3-by-n array where:
+    * a[0] contains the upper diagonal,
+    * a[1] contains the main diagonal,
+    * a[2] contains the lower diagonal.
+    * 
+    * @param a the matrix representation
+    * @return true if the structure is valid, false otherwise
+    * 
+    */
+    static boolean isValidTridiagonal(double[][] a)
+    {
+        if (a == null)
+        {
+            return false;
+        }
 
+        if (a.length != 3)
+        {
+            return false;
+        }
+
+        if (a[0] == null || a[1] == null || a[2] == null)
+        {
+            return false;
+        }
+
+        int n = a[1].length;
+
+        if (n < 1)
+        {
+            return false;
+        }
+
+        if (a[0].length != n || a[2].length != n)
+        {
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * Computes the sum of two tridiagonal matrices.
@@ -98,4 +140,6 @@ static double[][] exampleMatrix(int n)
 
         return result;
     }
+
+
 }
