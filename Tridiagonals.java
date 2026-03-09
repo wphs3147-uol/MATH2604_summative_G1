@@ -19,4 +19,63 @@ static double[][] exampleMatrix(int n)
         }
         return m; 
     }
+
+    static double[][] sum(double[][] a, double[][] b)
+    {
+        if (a == null || b == null)
+        {
+            return null;
+        }
+
+        if (a.length != 3 || b.length != 3)
+        {
+            return null;
+        }
+
+        if (a[0] == null || a[1] == null || a[2] == null)
+        {
+            return null;
+        }
+
+        if (b[0] == null || b[1] == null || b[2] == null)
+        {
+            return null;
+        }
+
+        int n = a[1].length;
+
+        if (n < 1)
+        {
+            return null;
+        }
+
+        if (a[0].length != n || a[2].length != n)
+        {
+            return null;
+        }
+
+        if (b[0].length != n || b[1].length != n || b[2].length != n)
+        {
+            return null;
+        }
+
+        double[][] result = new double[3][n];
+
+        for (int i = 0; i < n; i = i + 1)
+        {
+            result[0][i] = a[0][i] + b[0][i];
+        }
+
+        for (int i = 0; i < n; i = i + 1)
+        {
+            result[1][i] = a[1][i] + b[1][i];
+        }
+
+        for (int i = 0; i < n; i = i + 1)
+        {
+            result[2][i] = a[2][i] + b[2][i];
+        }
+
+        return result;
+    }
 }
