@@ -20,6 +20,26 @@ static double[][] exampleMatrix(int n)
         return m; 
     }
 
+
+    /**
+     * Computes the sum of two tridiagonal matrices.
+     *
+     * The matrices are stored in the following format as per the assignment brief:
+     * a[0] contains the upper diagonal,
+     * a[1] contains the main diagonal,
+     * a[2] contains the lower diagonal.
+     *
+     * The method adds the corresponding entries of the two matrices.
+     *
+     * If either matrix is null, has the wrong structure, or the sizes
+     * are incompatible, the method should return null.
+     *
+     * The input matrices are not modified.
+     *
+     * @param a the first tridiagonal matrix
+     * @param b the second tridiagonal matrix
+     * @return the resulting tridiagonal matrix representing a + b, or null if the inputs are invalid
+     */
     static double[][] sum(double[][] a, double[][] b)
     {
         if (a == null || b == null)
