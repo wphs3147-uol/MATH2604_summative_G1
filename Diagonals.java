@@ -2,6 +2,17 @@ import static java.lang.Math.*;
 class Diagonals
 {
     /**
+     * Part A) Implement example diagonal matrix.
+     * The example matrix is: [10, 8, 5, -10, 7]
+     * @return the diagonal entries of the example matrix
+     */
+    public static double[] exampleMatrix()
+    {
+        double[] matrix = {10, 8, 5, -10, 7};
+        return matrix;
+    }
+
+    /**
      * Computes the inverse of a diagonal matrix
      *
      * The matrix is represented by an array where each element
@@ -31,3 +42,6 @@ class Diagonals
         return result;
     }
 }
+
+
+
