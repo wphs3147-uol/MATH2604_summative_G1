@@ -1,6 +1,19 @@
 import static java.lang.Math.*;
 class Diagonals
 {
+    /**
+     * Computes the inverse of a diagonal matrix
+     *
+     * The matrix is represented by an array where each element
+     * corresponds to a value on the diagonal. The inverse of a
+     * diagonal matrix is calculated by taking the reciprocal of
+     * each diagonal entry.
+     *
+     * If the input array is null then the method returns null.
+     *
+     * @param a the array representing the diagonal entries
+     * @return an array representing the diagonal entries of the inverse matrix
+     */
     public static double[] inverse(double[] a)
     {
         if (a == null)
