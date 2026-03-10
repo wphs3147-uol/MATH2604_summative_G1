@@ -42,6 +42,46 @@ class Diagonals
         return result;
     }
 }
+/** 
+* Part B - sum of two diagonal matrices
+* a= first diagonal matrix 
+* b = second diagonal matrix 
+*/
+public static double[] product(double[] a, double[] b)
+{
+    if (a == null || b == null)
+    {
+        return null;
+    }
 
+    int n = a.length;
+    double[] result = new double[n];
 
+    for (int i = 0; i < n; i = i + 1)
+    {
+        result[i] = a[i] * b[i];
+    }
 
+    return result;
+}
+/** 
+ * Part C- product of two diagonal matrices
+ */
+
+public static double[] product(double[] a, double[] b)
+{
+    if (a == null || b == null)
+    {
+        return null;
+    }
+
+    int n = a.length;
+    double[] result = new double[n];
+
+    for (int i = 0; i < n; i = i + 1)
+    {
+        result[i] = a[i] * b[i];
+    }
+
+    return result;
+}
