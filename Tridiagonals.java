@@ -185,32 +185,5 @@ static double[][] exampleMatrix(int n)
 
         return x;
     }
-
-    public static void main(String[] args)
-{
-    double[][] T = {
-        {1, 1, 0},   // upper diagonal
-        {4, 4, 4},   // main diagonal
-        {1, 1, 0}    // lower diagonal
-    };
-
-    double[] v = {6, 6, 6};
-
-    double[] x = linearSolve(T, v);
-
-    if (x == null)
-    {
-        System.out.println("Invalid input");
-        return;
-    }
-
-    for (int i = 0; i < x.length; i++)
-    {
-        System.out.println(x[i]);
-    }
 }
 
-
-
-
-}
