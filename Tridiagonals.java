@@ -141,5 +141,76 @@ static double[][] exampleMatrix(int n)
         return result;
     }
 
+    /**
+     * Solves the linear system Tx = v where T is a tridiagonal matrix represented in the specified format.
+     * 
+     * @param T the tridiagonal matrix represented as a 3-by-n array
+     * @param v the right-hand side vector
+     * @return the solution vector x, or null if the inputs are invalid or if the system cannot be solved
+     */
+
+    static double[] linearSolve(double[][] T, double[] v)
+    {
+        if (!isValidTridiagonal(T) || v == null)
+        {
+            return null;
+        }
+
+        int n = T[1].length;
+
+        if (v.length != n)
+        {
+            return null;
+        }
+
+        double[] upper = T[0].clone();
+        double[] main = T[1].clone();
+        double[] lower = T[2].clone();
+        double[] rhs = v.clone();
+
+        for (int i = 1; i < n; i = i + 1)
+        {
+            double m = lower[i - 1] / main[i - 1];
+            main[i] = main[i] - m * upper[i - 1];
+            rhs[i] = rhs[i] - m * rhs[i - 1];
+        }
+
+        double[] x = new double[n];
+        x[n - 1] = rhs[n-1] / main[n - 1];
+        
+        for (int i = n - 2; i >= 0; i = i - 1)
+        {
+            x[i] = (rhs[i] - upper[i] * x[i + 1]) / main[i];
+        }
+
+        return x;
+    }
+
+    public static void main(String[] args)
+{
+    double[][] T = {
+        {1, 1, 0},   // upper diagonal
+        {4, 4, 4},   // main diagonal
+        {1, 1, 0}    // lower diagonal
+    };
+
+    double[] v = {6, 6, 6};
+
+    double[] x = linearSolve(T, v);
+
+    if (x == null)
+    {
+        System.out.println("Invalid input");
+        return;
+    }
+
+    for (int i = 0; i < x.length; i++)
+    {
+        System.out.println(x[i]);
+    }
+}
+
+
+
 
 }
