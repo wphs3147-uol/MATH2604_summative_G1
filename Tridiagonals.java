@@ -187,3 +187,52 @@ static double[][] exampleMatrix(int n)
     }
 }
 
+/**
+ * Computes the product of a diagonal matrix D with a tridiagonal matrix T.
+ * D is represented as a double[] containing the diagonal entries.
+ * T is represented using the tridiagonal storage format:
+ * T[0] = upper diagonal
+ * T[1] = main diagonal
+ * T[2] = lower diagonal
+ *
+ * If the inputs are invalid or dimensions do not match, return null.
+ * @param d the diagonal matrix
+ * @param t the tridiagonal matrix
+ * @return the tridiagonal matrix representing D*T
+ */
+static double[][] productWithDiagonal(double[] d, double[][] t)
+{
+    if (d == null || !isValidTridiagonal(t))
+    {
+        return null;
+    }
+
+    int n = t[1].length;
+
+    if (d.length != n)
+    {
+        return null;
+    }
+
+    double[][] result = new double[3][n];
+
+    // upper diagonal
+    for (int i = 0; i < n - 1; i++)
+    {
+        result[0][i] = d[i] * t[0][i];
+    }
+
+    // main diagonal
+    for (int i = 0; i < n; i++)
+    {
+        result[1][i] = d[i] * t[1][i];
+    }
+
+    // lower diagonal
+    for (int i = 0; i < n - 1; i++)
+    {
+        result[2][i] = d[i + 1] * t[2][i];
+    }
+
+    return result;
+}
