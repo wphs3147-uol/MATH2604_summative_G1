@@ -44,12 +44,18 @@ class Diagonals
 }
 /** 
 * Part B - sum of two diagonal matrices
-* a= first diagonal matrix 
-* b = second diagonal matrix 
+* Diagonal matrix is stored as a one dimensional array, each elements represents a diagonal entry 
+* In order to compute the sum, I added the corresponding diagonal entries from each array (a and b)
+* The result is a new array with the diagonal values summed 
+
+* a= first diagonal matrix (array)
+* b = second diagonal matrix (array) 
+* returns a new array with summed diagonal values, or null if the inputs are null or not the same length
+
 */
-public static double[] product(double[] a, double[] b)
+public static double[] sum(double[] a, double[] b)
 {
-    if (a == null || b == null)
+    if (a == null || b == null || a.lenth != b.length)
     {
         return null;
     }
@@ -59,18 +65,29 @@ public static double[] product(double[] a, double[] b)
 
     for (int i = 0; i < n; i = i + 1)
     {
-        result[i] = a[i] * b[i];
+        result[i] = a[i] + b[i];
     }
 
     return result;
 }
 /** 
  * Part C- product of two diagonal matrices
+ * Diagonal matrix is stored as a one dimensional array, each element represents a diagonal entry
+ * of the matrix
+ * 
+ * When computing the product of two diagonal matrices, only diagonal elements are used. 
+ * The outputted diagonal element is the product of the corresponding elements from the
+ * input arrays (a and b)
+ * 
+ * a= first diagonal matrix (array)
+ * b= second diagonal matrix (array)
+ * returns a new array with the product of input diagonal matrices or null if inputs are null or 
+ * if a and b are different lengths  
  */
 
 public static double[] product(double[] a, double[] b)
 {
-    if (a == null || b == null)
+    if (a == null || b == null || a.length != b.length)
     {
         return null;
     }

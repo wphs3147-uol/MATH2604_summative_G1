@@ -2,19 +2,37 @@ import static java.lang.Math.*;
 
 class Tridiagonals
 {
+    /**
+     * A tridiagonal matrix is stored as a 2D array of size 3 x n
+     * m[0] stores the elements that are above the main diagonal of the matrix 
+     * m[1] stores the elements that are on the diagonal of the matrix
+     * m[2] stores the elements below the main diagonal of the matrix 
+     * 
+     * this function constructs the tridiagonal matrix where: 
+     * all elements above the main diagonal are =1
+     * elements on the main  diagonal are = -(i+1)^2
+     * elements below the main diagonal are = i+2
+     * 
+     * n is the size of the matrix which has to be >0
+     * this function returns a 3xn array representing a tridiagonal matrix
+     * if the input n is zero or negative the code will stop and throw an error.
+     */
 static double[][] exampleMatrix(int n) 
     {
         if (n<=0) throw new IllegalArgumentException ("n must be >0");
-
+        
         double [][] m = new double [3][n];
 
-        for (int i =0; i< n - 1; i++) {
+        for (int i =0; i< n - 1; i++) 
+        {
             m[0][i] =1;
         }
-        for (int i=0; i<n; i++) {
+        for (int i=0; i<n; i++) 
+        {
             m[1][i] = -pow (i+1, 2);
         }
-        for (int i=0; i<n-1; i++) {
+        for (int i=0; i<n-1; i++) 
+        {
             m[2][i] = i+2;
         }
         return m; 
