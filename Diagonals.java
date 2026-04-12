@@ -1,14 +1,16 @@
 import static java.lang.Math.*;
-class Diagonals
+public class Diagonals
 {
     /**
-     * Part A) Implement example diagonal matrix.
-     * The example matrix is: [10, 8, 5, -10, 7]
-     * @return the diagonal entries of the example matrix
+     * Returns the diagonal entries of a 5x5 example diagonal matrix
+     * 
+     * The example matrix is: diag(10, 8, 5, -10, 7)
+     * 
+     * @return a double array containing the diagonal entries of the example matrix.
      */
     public static double[] exampleMatrix()
     {
-        double[] matrix = {10, 8, 5, -10, 7};
+        double[] matrix = {10.0, 8.0, 5.0, -10.0, 7.0};
         return matrix;
     }
 
