@@ -17,7 +17,7 @@ class Tridiagonals
      * this function returns a 3xn array representing a tridiagonal matrix
      * if the input n is zero or negative the code will stop and throw an error.
      */
-static double[][] exampleMatrix(int n) 
+    static double[][] exampleMatrix(int n) 
     {
         if (n<=0) throw new IllegalArgumentException ("n must be >0");
         
@@ -161,10 +161,12 @@ static double[][] exampleMatrix(int n)
 
     /**
      * Solves the linear system Tx = v where T is a tridiagonal matrix represented in the specified format.
+     * Uses the Thomas algorithm (a specialized form of Gaussian elimination for tridiagonal systems) to compute the solution.
      * 
      * @param T the tridiagonal matrix represented as a 3-by-n array
      * @param v the right-hand side vector
      * @return the solution vector x, or null if the inputs are invalid or if the system cannot be solved
+     * @assumes T is invertible 
      */
 
     static double[] linearSolve(double[][] T, double[] v)
@@ -188,9 +190,9 @@ static double[][] exampleMatrix(int n)
 
         for (int i = 1; i < n; i = i + 1)
         {
-            double m = lower[i - 1] / main[i - 1];
-            main[i] = main[i] - m * upper[i - 1];
-            rhs[i] = rhs[i] - m * rhs[i - 1];
+            double factor = lower[i - 1] / main[i - 1];
+            main[i] = main[i] - factor * upper[i - 1];
+            rhs[i] = rhs[i] - factor * rhs[i - 1];
         }
 
         double[] x = new double[n];
@@ -203,7 +205,6 @@ static double[][] exampleMatrix(int n)
 
         return x;
     }
-}
 
 /**
  * Computes the product of a diagonal matrix D with a tridiagonal matrix T.
@@ -254,3 +255,6 @@ static double[][] productWithDiagonal(double[] d, double[][] t)
 
     return result;
 }
+
+}
+
