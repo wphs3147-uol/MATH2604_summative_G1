@@ -1,5 +1,5 @@
 import static java.lang.Math.*;
-public class Diagonals
+class Diagonals
 {
     /**
      * Returns the diagonal entries of a 5x5 example diagonal matrix
