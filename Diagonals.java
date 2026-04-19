@@ -43,7 +43,6 @@ class Diagonals
         }
         return result;
     }
-}
 /** 
 * Part B - sum of two diagonal matrices
 * Diagonal matrix is stored as a one dimensional array, each elements represents a diagonal entry 
@@ -55,23 +54,28 @@ class Diagonals
 * returns a new array with summed diagonal values, or null if the inputs are null or not the same length
 
 */
-public static double[] sum(double[] a, double[] b)
-{
-    if (a == null || b == null || a.lenth != b.length)
+    public static double[] sum(double[] a, double[] b)
     {
-        return null;
+        if (a == null || b == null || a.length != b.length)
+        {
+            return null;
+        }
+        
+        if (a.length==0)
+        {
+            return new double [0];
+        }
+
+        int n = a.length;
+        double[] result = new double[n];
+
+        for (int i = 0; i < n; i = i + 1)
+        {
+            result[i] = a[i] + b[i];
+        }
+
+        return result;
     }
-
-    int n = a.length;
-    double[] result = new double[n];
-
-    for (int i = 0; i < n; i = i + 1)
-    {
-        result[i] = a[i] + b[i];
-    }
-
-    return result;
-}
 /** 
  * Part C- product of two diagonal matrices
  * Diagonal matrix is stored as a one dimensional array, each element represents a diagonal entry
@@ -87,20 +91,26 @@ public static double[] sum(double[] a, double[] b)
  * if a and b are different lengths  
  */
 
-public static double[] product(double[] a, double[] b)
-{
-    if (a == null || b == null || a.length != b.length)
+    public static double[] product(double[] a, double[] b)
     {
-        return null;
+        if (a == null || b == null || a.length != b.length)
+        {
+            return null;
+        }
+
+        if (a.length ==0)
+        {
+            return new double [0];
+        }
+
+        int n = a.length;
+        double[] result = new double[n];
+
+        for (int i = 0; i < n; i = i + 1)
+        {
+            result[i] = a[i] * b[i];
+        }
+
+        return result;
     }
-
-    int n = a.length;
-    double[] result = new double[n];
-
-    for (int i = 0; i < n; i = i + 1)
-    {
-        result[i] = a[i] * b[i];
-    }
-
-    return result;
 }

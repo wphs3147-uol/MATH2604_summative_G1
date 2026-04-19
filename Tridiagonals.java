@@ -19,23 +19,28 @@ class Tridiagonals
      */
     static double[][] exampleMatrix(int n) 
     {
-        if (n<=0) throw new IllegalArgumentException ("n must be >0");
-        
+        if (n<=0) 
+        {
+            throw new IllegalArgumentException ("n must be >0");
+        }
+
         double [][] m = new double [3][n];
 
-        for (int i =0; i< n - 1; i++) 
+        for (int i = 0; i < n - 1; i++)
         {
             m[0][i] =1;
         }
-        for (int i=0; i<n; i++) 
+
+        for (int i = 0; i < n; i++) 
         {
-            m[1][i] = -pow (i+1, 2);
+            m[1][i] = -(i+1) * (i+1);
         }
-        for (int i=0; i<n-1; i++) 
+
+        for (int i = 0; i < n - 1; i++) 
         {
-            m[2][i] = i+2;
+            m[2][i] = i+1;
         }
-        return m; 
+        return m;
     }
     /**
     * Checks whether the given array represents a valid tridiagonal matrix representation
@@ -206,6 +211,7 @@ class Tridiagonals
         return x;
     }
 
+
 /**
  * Computes the product of a diagonal matrix D with a tridiagonal matrix T.
  * D is represented as a double[] containing the diagonal entries.
@@ -219,41 +225,42 @@ class Tridiagonals
  * @param t the tridiagonal matrix
  * @return the tridiagonal matrix representing D*T
  */
-static double[][] productWithDiagonal(double[] d, double[][] t)
-{
-    if (d == null || !isValidTridiagonal(t))
+    static double[][] productWithDiagonal(double[] d, double[][] t)
     {
-        return null;
+        if (d == null || !isValidTridiagonal(t))
+        {
+            return null;
+        }
+
+        int n = t[1].length;
+
+        if (d.length != n)
+        {
+            return null;
+        }
+
+        double[][] result = new double[3][n];
+
+        // upper diagonal
+        for (int i = 0; i < n - 1; i++)
+        {
+            result[0][i] = d[i] * t[0][i];
+        }
+
+        // main diagonal
+        for (int i = 0; i < n; i++)
+        {
+            result[1][i] = d[i] * t[1][i];
+        }
+
+        // lower diagonal
+        for (int i = 0; i < n - 1; i++)
+        {
+            result[2][i] = d[i + 1] * t[2][i];
+        }
+
+        return result;
     }
-
-    int n = t[1].length;
-
-    if (d.length != n)
-    {
-        return null;
-    }
-
-    double[][] result = new double[3][n];
-
-    // upper diagonal
-    for (int i = 0; i < n - 1; i++)
-    {
-        result[0][i] = d[i] * t[0][i];
-    }
-
-    // main diagonal
-    for (int i = 0; i < n; i++)
-    {
-        result[1][i] = d[i] * t[1][i];
-    }
-
-    // lower diagonal
-    for (int i = 0; i < n - 1; i++)
-    {
-        result[2][i] = d[i + 1] * t[2][i];
-    }
-
-    return result;
 }
 
 }
