@@ -1,4 +1,4 @@
-import static java.lang.Math.*;
+
 /**
  * Provides static methods for performing operations on tridiagonal matrices.
  * A tridiagonal matrix is stored as a two dimensional array of size 3 x n,

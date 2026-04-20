@@ -1,4 +1,4 @@
-import static java.lang.Math.*;
+
 /**
  * Provides static methods for performing operations on diagonal matrices.
  * A diagonal matrix is represented as a one dimensional array of type double,
