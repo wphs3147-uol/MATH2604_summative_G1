@@ -14,7 +14,7 @@ class ODE
 {
     /**
      * Approximates the value of f(0.5) for the differential equation
-     * f''(x) = cos(x)f(x) + a x^2
+     * f''(x) = cos(x) * f(x) + a * x^2
      * with boundary conditions f(0) = 0 and f(1) = 0.
      * 
      * The interval [0,1] is split into n interior grid points. A tridiagonal
