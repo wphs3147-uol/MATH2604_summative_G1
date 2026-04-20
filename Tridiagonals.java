@@ -1,5 +1,20 @@
 import static java.lang.Math.*;
-
+/**
+ * Provides static methods for performing operations on tridiagonal matrices.
+ * A tridiagonal matrix is stored as a two dimensional array of size 3 x n,
+ * where n is the dimension of the matrix. The three rows represent:
+ * <ul>
+ *   <li>a[0]: the entries above the main diagonal (super diagonal)</li>
+ *   <li>a[1]: the entries on the main diagonal</li>
+ *   <li>a[2]: the entries below the main diagonal (sub diagonal)</li>
+ * </ul>
+ * The elements a[0][n-1] and a[2][n-1] are present in the array but are
+ * not used in any computation, as they do not correspond to matrix entries.
+ *
+ * Supported operations include validation, sum, product with a diagonal
+ * matrix, solving a linear system using the Thomas algorithm, and
+ * generating a fixed example matrix.
+ */
 class Tridiagonals
 {
     /**
