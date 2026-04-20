@@ -129,8 +129,6 @@ class Tridiagonals
             return null;
         }
         
-        
-
         double[][] result = new double[3][n];
 
         for (int i = 0; i < n; i = i + 1)
