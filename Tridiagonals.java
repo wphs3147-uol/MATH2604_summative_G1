@@ -1,37 +1,36 @@
 
 /**
- * Provides static methods for performing operations on tridiagonal matrices.
- * A tridiagonal matrix is stored as a two dimensional array of size 3 x n,
- * where n is the dimension of the matrix. The three rows represent:
- * <ul>
- *   <li>a[0]: the entries above the main diagonal (super diagonal)</li>
- *   <li>a[1]: the entries on the main diagonal</li>
- *   <li>a[2]: the entries below the main diagonal (sub diagonal)</li>
- * </ul>
- * The elements a[0][n-1] and a[2][n-1] are present in the array but are
- * not used in any computation, as they do not correspond to matrix entries.
+ * Contains static methods for working with tridiagonal matrices.
+ * The matrix is stored as a 3 x n array, where n is its size.
+ * The rows represent:
+ *   a[0]: super diagonal (above the main diagonal)
+ *   a[1]: main diagonal
+ *   a[2]: sub diagonal (below the main diagonal)
  *
- * Supported operations include validation, sum, product with a diagonal
- * matrix, solving a linear system using the Thomas algorithm, and
- * generating a fixed example matrix.
+ * The entries a[0][n-1] and a[2][n-1] are included in the array
+ * but are not used, as they do not correspond to actual matrix values.
+ *
+ * The class includes methods to check validity, add matrices,
+ * multiply with a diagonal matrix, solve systems using the Thomas
+ * algorithm and create a fixed example matrix.
  */
 class Tridiagonals
 {
-    /**
-     * A tridiagonal matrix is stored as a 2D array of size 3 x n
-     * m[0] stores the elements that are above the main diagonal of the matrix 
-     * m[1] stores the elements that are on the diagonal of the matrix
-     * m[2] stores the elements below the main diagonal of the matrix 
-     * 
-     * this function constructs the tridiagonal matrix where: 
-     * all elements above the main diagonal are =1
-     * elements on the main  diagonal are = -(i+1)^2
-     * elements below the main diagonal are = i+2
-     * 
-     * n is the size of the matrix which has to be >0
-     * this function returns a 3xn array representing a tridiagonal matrix
-     * if the input n is zero or negative the code will stop and throw an error.
-     */
+   /**
+ * Creates an example tridiagonal matrix of size n.
+ *
+ * The matrix is stored as a 3 x n array where:
+ * m[0] contains the upper diagonal,
+ * m[1] contains the main diagonal,
+ * m[2] contains the lower diagonal.
+ *
+ * The upper diagonal entries are 1, the main diagonal entries
+ * are -(i+1)^2, and the lower diagonal entries are i+1.
+ *
+ * @param n the size of the matrix, which must be greater than 0
+ * @return a tridiagonal matrix in 3 x n form
+ * @throws IllegalArgumentException if n <= 0
+ */
     static double[][] exampleMatrix(int n) 
     {
         if (n<=0) 
@@ -58,7 +57,7 @@ class Tridiagonals
         return m;
     }
     /**
-    * Checks whether the given array represents a valid tridiagonal matrix representation
+    * Checks whether the given array is a valid tridiagonal matrix.
     * 
     * A tridiagonal matrix is stored as a 3-by-n array where:
     * a[0] contains the upper diagonal,
@@ -102,24 +101,20 @@ class Tridiagonals
     }
 
     /**
-     * Computes the sum of two tridiagonal matrices.
-     *
-     * The matrices are stored in the following format as per the assignment brief:
-     * a[0] contains the upper diagonal,
-     * a[1] contains the main diagonal,
-     * a[2] contains the lower diagonal.
-     *
-     * The method adds the corresponding entries of the two matrices.
-     *
-     * If either matrix is null, has the wrong structure, or the sizes
-     * are incompatible, the method should return null.
-     *
-     * The input matrices are not modified.
-     *
-     * @param a the first tridiagonal matrix
-     * @param b the second tridiagonal matrix
-     * @return the resulting tridiagonal matrix representing a + b, or null if the inputs are invalid
-     */
+ * Adds two tridiagonal matrices.
+ *
+ * The matrices are stored as 3 x n arrays where:
+ * a[0] contains the upper diagonal,
+ * a[1] contains the main diagonal,
+ * a[2] contains the lower diagonal.
+ *
+ * If either input is invalid or the matrix sizes do not match,
+ * the method returns null.
+ *
+ * @param a the first tridiagonal matrix
+ * @param b the second tridiagonal matrix
+ * @return the matrix a + b, or null if the inputs are invalid
+ */
     static double[][] sum(double[][] a, double[][] b)
     {
         if (!isValidTridiagonal(a) || !isValidTridiagonal(b))
@@ -157,14 +152,15 @@ class Tridiagonals
     }
 
     /**
-     * Solves the linear system Tx = v where T is a tridiagonal matrix represented in the specified format.
-     * Uses the Thomas algorithm (a specialized form of Gaussian elimination for tridiagonal systems) to compute the solution.
-     * 
-     * @param T the tridiagonal matrix represented as a 3-by-n array
-     * @param v the right-hand side vector
-     * @return the solution vector x, or null if the inputs are invalid or if the system cannot be solved
-     * @assumes T is invertible 
-     */
+ * Solves the linear system Tx = v where T is a tridiagonal matrix.
+ *
+ * The method uses the Thomas algorithm to find the solution.
+ * If the inputs are invalid, the method returns null.
+ *
+ * @param T the tridiagonal matrix stored as a 3 x n array
+ * @param v the right hand side vector
+ * @return the solution vector x, or null if the inputs are invalid
+ */
 
     static double[] linearSolve(double[][] T, double[] v)
     {
@@ -205,17 +201,15 @@ class Tridiagonals
 
 
 /**
- * Computes the product of a diagonal matrix D with a tridiagonal matrix T.
- * D is represented as a double[] containing the diagonal entries.
- * T is represented using the tridiagonal storage format:
- * T[0] = upper diagonal
- * T[1] = main diagonal
- * T[2] = lower diagonal
+ * Multiplies a diagonal matrix D by a tridiagonal matrix T.
  *
- * If the inputs are invalid or dimensions do not match, return null.
- * @param d the diagonal matrix
- * @param t the tridiagonal matrix
- * @return the tridiagonal matrix representing D*T
+ * The diagonal matrix is stored as a one dimensional array and the
+ * tridiagonal matrix is stored in 3 x n form. If the inputs are
+ * invalid or the sizes do not match, the method returns null.
+ *
+ * @param d the diagonal entries of D
+ * @param t the tridiagonal matrix T
+ * @return the tridiagonal matrix D * T, or null if the inputs are invalid
  */
     static double[][] productWithDiagonal(double[] d, double[][] t)
     {
