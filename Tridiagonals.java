@@ -25,7 +25,7 @@ class Tridiagonals
      * m[2] contains the lower diagonal.
      *
      * The upper diagonal entries are 1, the main diagonal entries
-     * are -(i+1)^2, and the lower diagonal entries are i+1.
+     * are -(i+1)^2, and the lower diagonal entries are i+2.
      *
      * @param n the size of the matrix, which must be greater than 0
      * @return a tridiagonal matrix in 3 x n form
@@ -52,7 +52,7 @@ class Tridiagonals
 
         for (int i = 0; i < n - 1; i++) 
         {
-            m[2][i] = i+1;
+            m[2][i] = i+2;
         }
         return m;
     }
