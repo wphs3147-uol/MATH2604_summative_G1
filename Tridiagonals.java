@@ -16,21 +16,21 @@
  */
 class Tridiagonals
 {
-   /**
- * Creates an example tridiagonal matrix of size n.
- *
- * The matrix is stored as a 3 x n array where:
- * m[0] contains the upper diagonal,
- * m[1] contains the main diagonal,
- * m[2] contains the lower diagonal.
- *
- * The upper diagonal entries are 1, the main diagonal entries
- * are -(i+1)^2, and the lower diagonal entries are i+1.
- *
- * @param n the size of the matrix, which must be greater than 0
- * @return a tridiagonal matrix in 3 x n form
- * @throws IllegalArgumentException if n <= 0
- */
+    /**
+     * Creates an example tridiagonal matrix of size n.
+     *
+     * The matrix is stored as a 3 x n array where:
+     * m[0] contains the upper diagonal,
+     * m[1] contains the main diagonal,
+     * m[2] contains the lower diagonal.
+     *
+     * The upper diagonal entries are 1, the main diagonal entries
+     * are -(i+1)^2, and the lower diagonal entries are i+1.
+     *
+     * @param n the size of the matrix, which must be greater than 0
+     * @return a tridiagonal matrix in 3 x n form
+     * @throws IllegalArgumentException if n <= 0
+     */
     static double[][] exampleMatrix(int n) 
     {
         if (n<=0) 
@@ -57,17 +57,17 @@ class Tridiagonals
         return m;
     }
     /**
-    * Checks whether the given array is a valid tridiagonal matrix.
-    * 
-    * A tridiagonal matrix is stored as a 3-by-n array where:
-    * a[0] contains the upper diagonal,
-    * a[1] contains the main diagonal,
-    * a[2] contains the lower diagonal.
-    * 
-    * @param a the matrix representation
-    * @return true if the structure is valid, false otherwise
-    * 
-    */
+     * Checks whether the given array is a valid tridiagonal matrix.
+     * 
+     * A tridiagonal matrix is stored as a 3-by-n array where:
+     * a[0] contains the upper diagonal,
+     * a[1] contains the main diagonal,
+     * a[2] contains the lower diagonal.
+     * 
+     * @param a the matrix representation
+     * @return true if the structure is valid, false otherwise
+     * 
+     */
     static boolean isValidTridiagonal(double[][] a)
     {
         if (a == null)
@@ -101,20 +101,20 @@ class Tridiagonals
     }
 
     /**
- * Adds two tridiagonal matrices.
- *
- * The matrices are stored as 3 x n arrays where:
- * a[0] contains the upper diagonal,
- * a[1] contains the main diagonal,
- * a[2] contains the lower diagonal.
- *
- * If either input is invalid or the matrix sizes do not match,
- * the method returns null.
- *
- * @param a the first tridiagonal matrix
- * @param b the second tridiagonal matrix
- * @return the matrix a + b, or null if the inputs are invalid
- */
+     * Adds two tridiagonal matrices.
+     *
+     * The matrices are stored as 3 x n arrays where:
+     * a[0] contains the upper diagonal,
+     * a[1] contains the main diagonal,
+     * a[2] contains the lower diagonal.
+     *
+     * If either input is invalid or the matrix sizes do not match,
+     * the method returns null.
+     *
+     * @param a the first tridiagonal matrix
+     * @param b the second tridiagonal matrix
+     * @return the matrix a + b, or null if the inputs are invalid
+     */
     static double[][] sum(double[][] a, double[][] b)
     {
         if (!isValidTridiagonal(a) || !isValidTridiagonal(b))
@@ -152,15 +152,15 @@ class Tridiagonals
     }
 
     /**
- * Solves the linear system Tx = v where T is a tridiagonal matrix.
- *
- * The method uses the Thomas algorithm to find the solution.
- * If the inputs are invalid, the method returns null.
- *
- * @param T the tridiagonal matrix stored as a 3 x n array
- * @param v the right hand side vector
- * @return the solution vector x, or null if the inputs are invalid
- */
+     * Solves the linear system Tx = v where T is a tridiagonal matrix.
+     *
+     * The method uses the Thomas algorithm to find the solution.
+     * If the inputs are invalid, the method returns null.
+     *
+     * @param T the tridiagonal matrix stored as a 3 x n array
+     * @param v the right hand side vector
+     * @return the solution vector x, or null if the inputs are invalid
+     */
 
     static double[] linearSolve(double[][] T, double[] v)
     {
@@ -200,17 +200,17 @@ class Tridiagonals
     }
 
 
-/**
- * Multiplies a diagonal matrix D by a tridiagonal matrix T.
- *
- * The diagonal matrix is stored as a one dimensional array and the
- * tridiagonal matrix is stored in 3 x n form. If the inputs are
- * invalid or the sizes do not match, the method returns null.
- *
- * @param d the diagonal entries of D
- * @param t the tridiagonal matrix T
- * @return the tridiagonal matrix D * T, or null if the inputs are invalid
- */
+    /**
+     * Multiplies a diagonal matrix D by a tridiagonal matrix T.
+     *
+     * The diagonal matrix is stored as a one dimensional array and the
+     * tridiagonal matrix is stored in 3 x n form. If the inputs are
+     * invalid or the sizes do not match, the method returns null.
+     *
+     * @param d the diagonal entries of D
+     * @param t the tridiagonal matrix T
+     * @return the tridiagonal matrix D * T, or null if the inputs are invalid
+     */
     static double[][] productWithDiagonal(double[] d, double[][] t)
     {
         if (d == null || !isValidTridiagonal(t))
