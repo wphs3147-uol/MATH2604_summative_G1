@@ -25,18 +25,18 @@ class Diagonals
     }
 
     /**
-     * Computes the inverse of a diagonal matrix
-     *
-     * The matrix is represented by an array where each element
-     * corresponds to a value on the diagonal. The inverse of a
-     * diagonal matrix is calculated by taking the reciprocal of
-     * each diagonal entry.
-     *
-     * If the input array is null then the method returns null.
-     *
-     * @param a the array representing the diagonal entries
-     * @return an array representing the diagonal entries of the inverse matrix
-     */
+    * Computes the inverse of a diagonal matrix.
+    *
+    * The matrix is represented by an array whose entries are the values
+    * on the main diagonal. The inverse is found by taking the reciprocal
+    * of each diagonal entry.
+    *
+    * If the input array is null, the method returns null.
+    * It is assumed that the matrix is invertible.
+    *
+    * @param a the diagonal entries of the matrix
+    * @return an array representing the inverse diagonal matrix, or null if the input is null
+    */
     public static double[] inverse(double[] a)
     {
         if (a == null)
