@@ -1,4 +1,14 @@
 import static java.lang.Math.*;
+/**
+ * Provides static methods for performing operations on diagonal matrices.
+ * A diagonal matrix is represented as a one dimensional array of type double,
+ * where each element corresponds to an entry on the main diagonal of the matrix.
+ * For an n x n diagonal matrix, the array has length n and stores the values
+ * A(0,0), A(1,1), ..., A(n-1,n-1).
+ *
+ * Supported operations include computing the sum, product and inverse
+ * of diagonal matrices, as well as returning a fixed example matrix.
+ */
 class Diagonals
 {
     /**
