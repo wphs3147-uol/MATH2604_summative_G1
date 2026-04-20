@@ -122,42 +122,19 @@ class Tridiagonals
      */
     static double[][] sum(double[][] a, double[][] b)
     {
-        if (a == null || b == null)
-        {
-            return null;
-        }
-
-        if (a.length != 3 || b.length != 3)
-        {
-            return null;
-        }
-
-        if (a[0] == null || a[1] == null || a[2] == null)
-        {
-            return null;
-        }
-
-        if (b[0] == null || b[1] == null || b[2] == null)
+        if (!isValidTridiagonal(a) || !isValidTridiagonal(b))
         {
             return null;
         }
 
         int n = a[1].length;
 
-        if (n < 1)
+        if (b[1].length != n)
         {
             return null;
         }
-
-        if (a[0].length != n || a[2].length != n)
-        {
-            return null;
-        }
-
-        if (b[0].length != n || b[1].length != n || b[2].length != n)
-        {
-            return null;
-        }
+        
+        
 
         double[][] result = new double[3][n];
 
