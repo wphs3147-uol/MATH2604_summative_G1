@@ -1,8 +1,14 @@
 import static java.lang.Math.*;
 
 /**
- * Class for solving the provided differential equation.
- * The method uses a numerical approximation based on a tridiagonal matrix.
+ * Solves the boundary value problem f''(x) = cos(x) * f(x) + a * x^2
+ * on the interval [0, 1], with boundary conditions f(0) = 0 and f(1) = 0.
+ *
+ * The interval is split into n interior points and a tridiagonal system
+ * is formed using finite difference approximations. This system is then
+ * solved using the Thomas algorithm from the Tridiagonals class.
+ *
+ * The final output gives an approximation of f(0.5).
  */
 class ODE
 {
